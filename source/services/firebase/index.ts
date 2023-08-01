@@ -1,6 +1,6 @@
-import {initializeApp, getApps, getApp} from 'firebase/app';
+import {initializeApp, getApps, getApp, FirebaseApp} from 'firebase/app';
 
-export const createFirebaseApp = () => {
+export const createFirebaseApp = (): FirebaseApp => {
     if (getApps().length <= 0) {
         return initializeApp({
             apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
