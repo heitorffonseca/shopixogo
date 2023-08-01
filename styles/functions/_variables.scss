@@ -1,0 +1,36 @@
+$breakpoints: (
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1440px,
+);
+
+$colors: (
+  'deep-black': #1a1a1a, // Preto profundo
+  'dark-grey': #333333, // Cinza escuro
+  'gray': #4d4d4d, // Cinza
+  'medium-gray': #666666, // Cinza médio
+  'light-gray': #808080, // Cinza claro
+  'dark-blue': #1f2933, // Azul escuro
+  'teal-blue': #2d3a4a, // Azul petróleo
+  'navy-blue': #476582, // Azul marinho
+  'violet-blue': #5059a6, // Azul violeta
+  'grayish-purple': #784f65, // Roxo acinzentado
+  'white': #ffffff, // Branco
+);
+
+$font-sizes: (
+  '10px': 10px,
+  '14px': 14px,
+  '16px': 16px,
+  '18px': 18px,
+  '24px': 24px,
+  '30px': 30px,
+  '36px': 36px,
+  '48px': 48px,
+  '60px': 60px,
+  '72px': 72px,
+  '84px': 84px
+);
+
+$font_weights: (100, 300, 400, 500, 700, 900);

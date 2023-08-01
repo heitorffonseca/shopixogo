@@ -1,0 +1,13 @@
+@each $name, $font_size in $font_sizes {
+  .fs-#{$name} {
+    font-size: $font_size;
+  }
+
+  @each $device, $breakpoint in $breakpoints {
+    @include device($device) {
+      .fs-#{$device}-#{$name} {
+        font-size: $font_size !important;
+      }
+    }
+  }
+}

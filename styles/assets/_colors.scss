@@ -1,0 +1,27 @@
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color;
+  }
+
+  .text-#{$name} {
+    color: $color;
+  }
+
+  .text-hover-#{$name} {
+    &:hover {
+      color: $color;
+    }
+  }
+
+  .btn-#{$name} {
+    background-color: $color;
+    border-color: $color;
+  }
+
+  .btn-hover-#{$name} {
+    &:hover {
+      background-color: $color;
+      border-color: $color;
+    }
+  }
+}
