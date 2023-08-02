@@ -2,6 +2,7 @@ import React, { ReactNode} from "react";
 import Head from "next/head";
 import {Roboto} from "next/font/google";
 import {NextFont} from "next/dist/compiled/@next/font";
+import {Navbar} from "@/source/components/ui/nav/Navbar";
 
 const font: NextFont = Roboto({
     subsets: ['latin'],
@@ -25,6 +26,8 @@ const App: React.FC<Props> = ({ children }: Props) => {
 
             <main className={font.className}>
                 <div className='bg-gray min-vh-100 min-vw-100'>
+                    <Navbar />
+
                     {children}
                 </div>
             </main>

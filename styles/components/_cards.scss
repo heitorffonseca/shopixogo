@@ -1,0 +1,10 @@
+.product-card {
+  background-color: map-get($colors, 'navy-blue');
+  border-radius: 25px;
+
+  img {
+    @include device('lg') {
+      height: 400px;
+    }
+  }
+}

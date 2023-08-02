@@ -1,0 +1,5 @@
+@each $name, $radius in $borders {
+  .br-#{$name} {
+    border-radius: $radius;
+  }
+}

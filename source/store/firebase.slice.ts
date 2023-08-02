@@ -1,12 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {DocumentData} from "@firebase/firestore";
+import {createSlice} from '@reduxjs/toolkit';
+import {ProductInterface} from "@/source/interfaces/ProductInterface";
+import {CategoryInterface} from "@/source/interfaces/CategoryInterface";
 
 type InitialStateParams = {
-    categories: DocumentData[] | null
+    categories: CategoryInterface[] | null,
+    products: ProductInterface[] | null
 }
 
 const initialState: InitialStateParams = {
-    categories: null
+    categories: null,
+    products: null
 };
 
 const firebaseSlice = createSlice({
@@ -15,10 +18,13 @@ const firebaseSlice = createSlice({
     reducers: {
         setCategories(state, action) {
             state.categories = action.payload
+        },
+        setProducts(state, action) {
+            state.products = action.payload
         }
     }
 });
 
-export const { setCategories } = firebaseSlice.actions;
+export const { setCategories, setProducts } = firebaseSlice.actions;
 
 export default firebaseSlice.reducer;
