@@ -36,7 +36,6 @@ const ListProducts: React.FC<ListProductsProps> = ({ products }: ListProductsPro
                         .replace(/[\u0300-\u036f]/g, "")
                         .toLowerCase();
 
-
                     return name.includes(query)
                 })
                 : null;
@@ -57,8 +56,8 @@ const ListProducts: React.FC<ListProductsProps> = ({ products }: ListProductsPro
         setIsLoading(false);
     }, [products]);
 
-    if (!productFilter || isLoading) {
-        return <ProductLoader />;
+    if (!productFilter) {
+        return <ProductLoader showSearch />;
     }
 
     return (
@@ -67,13 +66,17 @@ const ListProducts: React.FC<ListProductsProps> = ({ products }: ListProductsPro
                 <SearchInput handleSearchKeyUp={handleSearchKeyUp} placeholder='Buscar' arialLabel='search' />
             </Toolbar>
 
-            <Grid container spacing={2} className='justify-content-center'>
-                {productFilter.map((product: ProductInterface, index: number) => (
-                    <Grid key={index} item xs={12} md={6} lg={4}>
-                        <ProductCard product={product} />
-                    </Grid>
-                ))}
-            </Grid>
+            {isLoading && <ProductLoader />}
+
+            {!isLoading && (
+                <Grid container spacing={2} className='justify-content-center'>
+                    {productFilter.map((product: ProductInterface, index: number) => (
+                        <Grid key={index} item xs={12} md={6} lg={4}>
+                            <ProductCard product={product} />
+                        </Grid>
+                    ))}
+                </Grid>
+            )}
         </>
     );
 }
