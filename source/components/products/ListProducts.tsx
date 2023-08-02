@@ -4,6 +4,7 @@ import {ProductCard} from "@/source/components/products/ProductCard";
 import {ProductInterface} from "@/source/interfaces/ProductInterface";
 import {SearchInput} from "@/source/components/ui/form/SearchInput";
 import Toolbar from "@mui/material/Toolbar";
+import {ProductLoader} from "@/source/components/products/ProductLoader";
 
 
 type ListProductsProps = {
@@ -56,18 +57,8 @@ const ListProducts: React.FC<ListProductsProps> = ({ products }: ListProductsPro
         setIsLoading(false);
     }, [products]);
 
-    const productsGridSkeletonArray: Array<any> = [...Array(10)];
-
-    if (!productFilter) {
-        return (
-            <Grid container spacing={2} className='justify-content-center'>
-                {productsGridSkeletonArray.map((_, index: number) => (
-                    <Grid key={index} item xs={12} md={6} lg={4}>
-                        <Skeleton variant="rectangular" height={600} className='br-25px' />
-                    </Grid>
-                ))}
-            </Grid>
-        );
+    if (!productFilter || isLoading) {
+        return <ProductLoader />;
     }
 
     return (
@@ -77,13 +68,7 @@ const ListProducts: React.FC<ListProductsProps> = ({ products }: ListProductsPro
             </Toolbar>
 
             <Grid container spacing={2} className='justify-content-center'>
-                {isLoading && productsGridSkeletonArray.map((_, index: number) => (
-                    <Grid key={index} item xs={12} md={6} lg={4}>
-                        <Skeleton variant="rectangular" height={600} className='br-25px' />
-                    </Grid>
-                ))}
-
-                {!isLoading &&  productFilter.map((product: ProductInterface, index: number) => (
+                {productFilter.map((product: ProductInterface, index: number) => (
                     <Grid key={index} item xs={12} md={6} lg={4}>
                         <ProductCard product={product} />
                     </Grid>
