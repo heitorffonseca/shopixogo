@@ -2,18 +2,18 @@ import {NextPage} from "next";
 import App from "@/source/components/layout/App";
 import {useGetDocs} from "@/source/hooks/firebase/useGetDocs";
 import {useDispatch} from "react-redux";
-import {setCategories} from "@/source/store/firebase.slice";
-import AllCards from "@/source/components/categories/card/AllCards";
+import {setCategories, setProducts} from "@/source/store/firebase.slice";
+import {ProductSession} from "@/source/components/products/ProductSession";
+import { ProductInterface } from "@/source/interfaces/ProductInterface";
 
 const Home: NextPage = () => {
     const dispatch = useDispatch();
-    dispatch(setCategories(useGetDocs({ collectionName: 'categories' })))
+    dispatch(setCategories(useGetDocs({ collectionName: 'categories' })));
+    dispatch(setProducts(useGetDocs({ collectionName: 'products' })));
 
     return (
         <App>
-            <section>
-                <AllCards/>
-            </section>
+            <ProductSession />
         </App>
     );
 }

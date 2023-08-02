@@ -1,3 +1,4 @@
+import React from "react";
 import {useEffect, useState} from "react";
 import {collection, DocumentData, onSnapshot} from "@firebase/firestore";
 import {db} from "@/source/services/firebase/firestore";
@@ -19,7 +20,7 @@ const useGetDocs = ({collectionName}: Params) => {
         return () => {
             getDocs();
         }
-    }, []);
+    }, [coll]);
 
     return documents;
 }
